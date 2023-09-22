@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using TMPro;
-
+using System.Threading;
 public class EnemyMovementD1 : MonoBehaviour
 {
     public static EnemyMovementD1 main;
@@ -13,6 +13,7 @@ public class EnemyMovementD1 : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Animator Ani;
     [SerializeField] private GameObject imgLamCham;
+    [SerializeField] private GameObject lua;
 
     private Transform target;
     private int pathIndex = 0;
@@ -83,17 +84,39 @@ public class EnemyMovementD1 : MonoBehaviour
         {
             imgLamCham.SetActive(true);
         }
-        StartCoroutine(ResetSpeed());
+        //Thread t = new Thread(() =>
+        //{
+        //    stop(3000);
+        //});
+        //t.Start();
+        StartCoroutine(ResetSpeed(3f));
     }
+
     public void dung()
     {
         moveSpeed = 0;
-        StartCoroutine(ResetSpeed());
+        //Thread t = new Thread(() =>
+        //{      
+        //        stop(3000);
+        //});
+        //t.Start();
+        StartCoroutine(ResetSpeed(1f));
     }
-    public IEnumerator ResetSpeed()
+    public IEnumerator ResetSpeed(float time)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(time);
         moveSpeed = baseSpeed;
         imgLamCham.SetActive(false);
+    }
+    //lua
+    public void Lua()
+    {
+        lua.SetActive(true);
+        StartCoroutine(tacLua());
+    }
+    public IEnumerator tacLua()
+    {
+        yield return new WaitForSeconds(2f);
+        lua.SetActive(false);
     }
 }

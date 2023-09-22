@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHeatl;
     [SerializeField] private int currencyWorth;//tien thuong
     [SerializeField] private Animator Ani;
+    //[SerializeField] private GameObject no;
 
     public Image fillBar;
     private int hitPoints;
@@ -24,13 +25,17 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        
+
+        //if(hitPoints <= 0)
+        //{
+        //    no.SetActive(true);
+        //}
         Ani.SetTrigger("BiBan");//animation bi ban
         hitPoints -= dmg;
         fillBar.fillAmount = (float)hitPoints / (float)maxHeatl;//thanh máu
         
         if (hitPoints <= 0 && !isDestroyed)
-        {
+        {        
             EnemySpawner.onEnemyDestroy.Invoke();
             EnemySpawner2D2.onEnemyDestroy.Invoke();
             LevelManager.main.IncreaseCurrency(currencyWorth);

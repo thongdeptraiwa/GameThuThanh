@@ -24,7 +24,7 @@ public class EnemySpawner2D2 : MonoBehaviour
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
-    private int currentWave = 100;
+    private int currentWave = 100;//tien moi wave
     private float timeSinceLastSpawn;
     private float enemiesAlive;
     private float enemiesLeftToSpawn;
@@ -61,8 +61,6 @@ public class EnemySpawner2D2 : MonoBehaviour
             return;
         }
 
-
-
         //goc
         if (!isSpawning)
         {
@@ -72,7 +70,7 @@ public class EnemySpawner2D2 : MonoBehaviour
         timeSinceLastSpawn += Time.deltaTime;
 
         //ket thuc game
-        if (vong != 13)
+        if (vong != 11)
         {
             //dieu kien tạo quai
             if (timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeftToSpawn > 0)
@@ -88,7 +86,7 @@ public class EnemySpawner2D2 : MonoBehaviour
                 ButtonNext.SetActive(true);
                 checkWave = false;
                 LevelManager.main.IncreaseCurrency(100);
-                if (vong == 12)
+                if (vong == 10)
                 {
                     //thang
                     textThang.text = string.Format("Thắng");
@@ -178,8 +176,8 @@ public class EnemySpawner2D2 : MonoBehaviour
                 }
             case 7:
             case 8:
-            case 9:
-            case 10:
+            //case 9:
+            //case 10:
                 {
                     //int index = Random.Range(0, enemyPrefabs.Length - 4);
                     //if (index == 0 || index == 2 || index == 4 || index == 6)
@@ -199,8 +197,10 @@ public class EnemySpawner2D2 : MonoBehaviour
                     Instantiate(prefabToSpawn2, LevelManager2.main.startPoint.position, Quaternion.identity);
                     break;
                 }
-            case 11:
-            case 12:
+            //case 11:
+            
+            case 9:
+            default:
                 {
                     GameObject prefabToSpawn = enemyPrefabs[10];
                     Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
@@ -225,7 +225,7 @@ public class EnemySpawner2D2 : MonoBehaviour
                 }
             case 2:
                 {
-                    soLuongQuai = 2;
+                    soLuongQuai = 3;
                     enemiesPerSecond = 0.5f;
                     break;
                 }
@@ -237,20 +237,20 @@ public class EnemySpawner2D2 : MonoBehaviour
                 }
             case 4:
                 {
-                    soLuongQuai = 4;
+                    soLuongQuai = 6;
                     enemiesPerSecond = 0.75f;
                     break;
                 }
             case 5:
                 {
-                    soLuongQuai = 8;
+                    soLuongQuai = 10;
                     enemiesPerSecond = 1f;
                     break;
                 }
             case 6:
                 {
                     soLuongQuai = 5;
-                    enemiesPerSecond = 0.75f;
+                    enemiesPerSecond = 0.5f;
                     break;
                 }
             case 7:
@@ -262,28 +262,29 @@ public class EnemySpawner2D2 : MonoBehaviour
             case 8:
                 {
                     soLuongQuai = 30;
-                    enemiesPerSecond = 1f;
-                    break;
-                }
-            case 9:
-                {
-                    soLuongQuai = 40;
                     enemiesPerSecond = 1.5f;
                     break;
                 }
-            case 10:
-                {
-                    soLuongQuai = 50;
-                    enemiesPerSecond = 2f;
-                    break;
-                }
-            case 11:
+            //case 9:
+            //    {
+            //        soLuongQuai = 35;
+            //        enemiesPerSecond = 1.5f;
+            //        break;
+            //    }
+            //case 10:
+            //    {
+            //        soLuongQuai = 45;
+            //        enemiesPerSecond = 2f;
+            //        break;
+            //    }
+            //case 11:
+            case 9:
                 {
                     soLuongQuai = 1;
                     enemiesPerSecond = 0.5f;
                     break;
                 }
-            case 12:
+            default:
                 {//vong cuoi boss
                     soLuongQuai = 2;
                     enemiesPerSecond = 0.5f;

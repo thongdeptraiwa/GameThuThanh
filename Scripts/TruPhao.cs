@@ -20,8 +20,8 @@ public class TruPhao : MonoBehaviour
 
 
     [Header("Attributes")]
-    [SerializeField] private float targetingRange = 1.5f;
-    [SerializeField] private float rotationSpeed = 200f;
+    [SerializeField] private float targetingRange = 1.5f;//tam ban
+    [SerializeField] private float rotationSpeed = 200f;//toc do ban
     [SerializeField] private float bps = 1f; //Bullets per Second
 
 

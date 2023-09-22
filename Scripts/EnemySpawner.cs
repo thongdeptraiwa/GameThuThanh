@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
-    private int currentWave = 100;
+    private int currentWave = 100;//tien moi wave
     private float timeSinceLastSpawn;
     private float enemiesAlive;
     private float enemiesLeftToSpawn;
@@ -60,8 +60,6 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        
-
         //goc
         if (!isSpawning)
         {
@@ -71,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
         timeSinceLastSpawn += Time.deltaTime;
 
         //ket thuc game
-        if (vong != 11)
+        if (vong != 6)
         {
             //dieu kien tạo quai
             if (timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeftToSpawn > 0)
@@ -87,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
                 ButtonNext.SetActive(true);
                 checkWave = false;
                 LevelManager.main.IncreaseCurrency(100);
-                if (vong == 10)
+                if (vong == 5)
                 {
                     //thang
                     textThang.text = string.Format("Thắng");
@@ -154,28 +152,28 @@ public class EnemySpawner : MonoBehaviour
                     break;
                 }
             case 4:
-            case 5:
+            //case 5:
                 {
                     int index = Random.Range(0, enemyPrefabs.Length - 1);
                     GameObject prefabToSpawn = enemyPrefabs[index];
                     Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
                     break;
                 }
-            case 6:
-                {
-                    GameObject prefabToSpawn = enemyPrefabs[1];
-                    Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
-                    break;
-                }
-            case 7:
-            case 8:
-            case 9:
-                {
-                    int index = Random.Range(0, enemyPrefabs.Length - 1);
-                    GameObject prefabToSpawn = enemyPrefabs[index];
-                    Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
-                    break;
-                }
+            //case 6:
+            //    {
+            //        GameObject prefabToSpawn = enemyPrefabs[1];
+            //        Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
+            //        break;
+            //    }
+            //case 7:
+            //case 8:
+            //case 9:
+            //    {
+            //        int index = Random.Range(0, enemyPrefabs.Length - 1);
+            //        GameObject prefabToSpawn = enemyPrefabs[index];
+            //        Instantiate(prefabToSpawn, LevelManager.main.startPoint.position, Quaternion.identity);
+            //        break;
+            //    }
             default:
                 {//vong cuoi
                     //boss
@@ -200,52 +198,52 @@ public class EnemySpawner : MonoBehaviour
                 }
             case 2:
                 {
-                    soLuongQuai = 4;
+                    soLuongQuai = 6;
                     enemiesPerSecond = 0.5f;
                     break;
                 }
             case 3:
                 {
                     soLuongQuai = 2;
-                    enemiesPerSecond = 0.5f;
+                    enemiesPerSecond = 0.25f;
                     break;
                 }
             case 4:
                 {
-                    soLuongQuai = 8;
+                    soLuongQuai = 20;
                     enemiesPerSecond = 0.75f;
                     break;
                 }
-            case 5:
-                {
-                    soLuongQuai = 15;
-                    enemiesPerSecond = 1f;
-                    break;
-                }
-            case 6:
-                {
-                    soLuongQuai = 10;
-                    enemiesPerSecond = 1f;
-                    break;
-                }
-            case 7:
-                {
-                    soLuongQuai = 25;
-                    enemiesPerSecond = 1.5f;
-                    break;
-                }
-            case 8:
-                {
-                    soLuongQuai = 40;
-                    enemiesPerSecond = 1.5f;
-                    break;
-                }
-            case 9:
-                {
-                    soLuongQuai = 60;
-                    enemiesPerSecond = 2f;
-                    break;
-                }
+            //case 5:
+            //    {
+            //        soLuongQuai = 15;
+            //        enemiesPerSecond = 0.75f;
+            //        break;
+            //    }
+            //case 6:
+            //    {
+            //        soLuongQuai = 10;
+            //        enemiesPerSecond = 0.5f;
+            //        break;
+            //    }
+            //case 7:
+            //    {
+            //        soLuongQuai = 25;
+            //        enemiesPerSecond = 1f;
+            //        break;
+            //    }
+            //case 8:
+            //    {
+            //        soLuongQuai = 35;
+            //        enemiesPerSecond = 1f;
+            //        break;
+            //    }
+            //case 9:
+            //    {
+            //        soLuongQuai = 45;
+            //        enemiesPerSecond = 1.5f;
+            //        break;
+            //    }
             default:
                 {//vong cuoi boss
                     soLuongQuai = 1;

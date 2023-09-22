@@ -56,19 +56,19 @@ public class LevelManager : MonoBehaviour
         }
 
         //sao
-        if(mau >= 9)
+        if(mau >= 9)//10-9
         {
             sao1.sprite = sao;
             sao2.sprite = sao;
             sao3.sprite = sao;
             soSao = 3;
-        }else if(mau >= 5)
+        }else if(mau >= 5)//8-5
         {
             sao1.sprite = sao;
             sao2.sprite = sao;
             sao3.sprite = noSao;
             soSao = 2;
-        }else if (mau >= 1)
+        }else if (mau >= 1)//4-1
         {
             sao1.sprite = sao;
             sao2.sprite = noSao;

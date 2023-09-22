@@ -25,7 +25,9 @@ public class hoiChieuCoc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //toc do thay doi
+        //max = max * TangTocDoGame.main.tocDo;
+
         fillCoc.fillAmount = (float)hienTai / (float)max;
         if (fillCoc.fillAmount == 1)
         {

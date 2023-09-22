@@ -6,8 +6,6 @@ public class Plot2 : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private Sprite dau;
-    [SerializeField] private Sprite nham;
     [SerializeField] private GameObject canva;
     //[SerializeField] private GameObject VungDat;
 
@@ -17,16 +15,6 @@ public class Plot2 : MonoBehaviour
     private void Start()
     {
         canva.SetActive(false);
-    }
-
-    private void OnMouseEnter()
-    {
-        sr.sprite = nham;
-    }
-
-    private void OnMouseExit()
-    {
-        sr.sprite = dau;
     }
 
     private void OnMouseDown()
